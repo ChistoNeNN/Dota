@@ -28,7 +28,7 @@ public final class Dota extends JavaPlugin implements Listener, CommandExecutor 
     public static Inventory Blacksmith;
 
     HashMap<Player, Integer> teams = new HashMap<>();
-    HashMap<Player, Integer> clas = new HashMap<>(); // 0 - воин, 1 - шахтер, 2 - морозный лучник, 3 - зевс
+    HashMap<Player, Integer> clas = new HashMap<>(); // ID классов: 0 - воин, 1 - шахтер, 2 - морозный лучник, 3 - зевс
     HashMap<Player, Player> phoenixbound = new HashMap<>();
 
     int radiantminers = 0;
