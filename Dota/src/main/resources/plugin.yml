@@ -1,0 +1,33 @@
+name: Dota
+version: 0.0.3
+main: me.chistonenn.dota.Dota
+api-version: 1.16
+description: Dota plugin ;)
+commands:
+  clearinventories:
+    description: Clear all player's inventories and set their gamemode to survival.
+    usage: /<command>
+  startgame:
+    usage: /<command>
+    description: Starts the game.
+  team:
+    usage: /<command>
+    description: Select a team.
+  stopgame:
+    usage: /<command>
+    description: Stop the game.
+  setstat:
+    usage: /<command>
+    description: Sets value of the stat.
+  playerinfo:
+    usage: /<command>
+    description: Get player's stats.
+  sethp:
+    usage: /<command>
+    description: Set player's max hp.
+  heal:
+    usage: /<command>
+    description: Heals a target.
+  giveclasschestkey:
+    usage: /<command>
+    description: Gives classes chest key.
