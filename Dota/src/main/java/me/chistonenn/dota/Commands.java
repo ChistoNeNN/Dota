@@ -25,7 +25,7 @@ public class Commands implements CommandExecutor {
         }
         Player player = (Player) sender;
 
-        if (player.hasPermission("nexus.admin")) {
+        if (player.hasPermission("dota.admin")) {
             if (cmd.getName().equalsIgnoreCase("startgame")) {
                 if (!Dota.getInstance().gamestarted) {
                     StartGame.startGame();
@@ -173,7 +173,7 @@ public class Commands implements CommandExecutor {
 
                             p.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 100, 199));
 
-                            if (Dota.getInstance().clas.get(p).equals(0)) {
+                            if (Dota.getInstance().clas.get(p).equals(0)) { // Воин
                                 p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, 140, 1));
                                 p.getInventory().setHelmet(warhelm);
                                 p.getInventory().setChestplate(warchest);
@@ -183,7 +183,7 @@ public class Commands implements CommandExecutor {
                                 p.getInventory().addItem(warsword);
                                 p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(22);
                                 p.getInventory().addItem(new ItemStack(Material.COOKED_CHICKEN, 64));
-                            } else if (Dota.getInstance().clas.get(p).equals(1)) {
+                            } else if (Dota.getInstance().clas.get(p).equals(1)) { // Шахтёр
                                 p.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 140, 0));
                                 p.getInventory().setHelmet(minerhelm);
                                 p.getInventory().setChestplate(minerchest);
@@ -193,7 +193,7 @@ public class Commands implements CommandExecutor {
                                 p.getInventory().addItem(minerpickaxe);
                                 p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20);
                                 p.getInventory().addItem(new ItemStack(Material.COOKED_CHICKEN, 64));
-                            } else if (Dota.getInstance().clas.get(p).equals(2)) {
+                            } else if (Dota.getInstance().clas.get(p).equals(2)) { // Лучник
                                 p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 140, 0));
                                 p.getInventory().setHelmet(drowhelm);
                                 p.getInventory().setChestplate(drowchest);
@@ -203,7 +203,7 @@ public class Commands implements CommandExecutor {
                                 p.getInventory().addItem(new ItemStack(Material.ARROW));
                                 p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(18);
                                 p.getInventory().addItem(new ItemStack(Material.COOKED_CHICKEN, 64));
-                            } else if (Dota.getInstance().clas.get(p).equals(3)) {
+                            } else if (Dota.getInstance().clas.get(p).equals(3)) { // Зевс
                                 p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 140, 0));
                                 p.getInventory().setHelmet(zeushelm);
                                 p.getInventory().setBoots(zeusboots);
@@ -277,34 +277,6 @@ public class Commands implements CommandExecutor {
                     p.setGameMode(GameMode.SURVIVAL);
                     p.teleport(new Location(Bukkit.getWorld("world"), 4, 136, -0.5));
                 }
-            } else if (cmd.getName().equalsIgnoreCase("stopgame")) {
-                Bukkit.getScheduler().cancelTasks(Dota.getInstance());
-                Dota.getInstance().gamestarted = false;
-                Dota.getInstance().direupgradehp = 0;
-                Dota.getInstance().direupgradedmg = 0;
-                Dota.getInstance().direupgradespd = 0;
-                Dota.getInstance().radiantupgradehp = 0;
-                Dota.getInstance().radiantupgradedmg = 0;
-                Dota.getInstance().radiantupgradespd = 0;
-                Dota.getInstance().direbasehp = 0;
-                Dota.getInstance().direbasedmg = 0;
-                Dota.getInstance().direbasespd = 0;
-                Dota.getInstance().radiantbasehp = 0;
-                Dota.getInstance().radiantbasedmg = 0;
-                Dota.getInstance().radiantbasespd = 0;
-                Dota.getInstance().radiantcreepsliving.clear();
-                Dota.getInstance().direcreepsliving.clear();
-                Dota.getInstance().radiantgold = 0;
-                Dota.getInstance().diregold = 0;
-                Dota.getInstance().direhp = 60;
-                Dota.getInstance().radianthp = 60;
-                Dota.getInstance().gametimesec = 0;
-                Dota.getInstance().gametimemin = 0;
-                for (LivingEntity entities : Bukkit.getWorld("world").getLivingEntities()) {
-                    if (!entities.getType().equals(EntityType.PLAYER)) {
-                        entities.remove();
-                    }
-                }
             } else if (cmd.getName().equalsIgnoreCase("heal")) {
                 player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
                 player.setFoodLevel(20);
@@ -322,7 +294,7 @@ public class Commands implements CommandExecutor {
         } else if (cmd.getName().equalsIgnoreCase("playerinfo")) {
             if (args.length >= 1) {
                 Player p = player.getServer().getPlayer(args[0]);
-                if (p != null) { // TODO: Если игрок оффлайн, проверять его статы через конфиг.
+                if (p != null) { // TODO: Доработать команду
                     PlayerManager playerManager = Dota.playerManagerHashMap.get(p.getUniqueId());
                     player.sendMessage("§aИнформация об игроке " + p.getName() + ":");
                     if (p.isOnline()) {
