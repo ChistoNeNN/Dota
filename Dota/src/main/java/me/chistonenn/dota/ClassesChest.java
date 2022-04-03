@@ -28,7 +28,7 @@ public class ClassesChest implements Listener {
                     if (!p.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase("§2Ключ от кейса с классами")) return;
                     e.setCancelled(true);
                     p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
-                    p.sendMessage("§6ВАМ ВЫПАЛ ЛЕГЕНДАРНЫЙ УБИЙЦА INVOKER ♦♦♦");
+                    // Дроп рандомного класса здесь
                 }
             }
         }
